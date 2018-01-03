@@ -28,15 +28,18 @@ plt.show()
 ################################################################################
 
 
-### your code here!  name your classifier object clf if you want the 
+### your code here!  name your classifier object clf if you want the
 ### visualization code (prettyPicture) to show you the decision boundary
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
 
+clf = KNeighborsClassifier(n_neighbors=3, weights='distance', n_jobs=2)
+clf = clf.fit(features_train, labels_train)
 
+pred = clf.predict(features_test)
 
-
-
-
-
+acc = accuracy_score(labels_test, pred)
+print(acc)
 
 try:
     prettyPicture(clf, features_test, labels_test)
